@@ -30,7 +30,7 @@ To run the script you need to:
 ## What bot do?
 
 To run the bot you need to text `/start` then it will ask you to choose resource. There are 4 resource right now (_Tengrinews, Newtimes, Liter and Informburo_).
-By picking needed resource, bot parser the latest (~20) news from resource's website and saves it to `json\{name_of_resource}.json` file.
+By picking needed resource, bot parses the latest (~20) news from resource's website and saves it to `json\{name_of_resource}.json` file.
 After you picked resource, it asks to choose the option (All news, Last 5 news and Latest(Fresh)). So by choosing needed option it will send news as messages.
 
 Also the boot is running in asyncio loop, so every 15 minutes, it checking for updates in all resources, if there is any updates, the bot will automatically send those as messages.

@@ -25,7 +25,7 @@ def check_updates():
         if(article_id in articles):
             continue
         else:
-            article_title = article.find("div", class_="new-card-text").text.strip()
+            article_title = json.dumps(article.find("div", class_="new-card-text").text.strip())
             article_date = article.find("div", class_="new-card-data").text.strip()
 
             articles[article_id] = {

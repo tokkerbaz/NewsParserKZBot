@@ -26,7 +26,7 @@ def check_updates():
             if(article_id in articles):
                 continue
             else:
-                article_title = article.find('a', class_='news__link').text.strip()
+                article_title = json.dumps(article.find('a', class_='news__link').text.strip())
                 article_date = article.find("div", class_='news__date').text.strip()
 
                 articles[article_id] = {

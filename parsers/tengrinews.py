@@ -1,5 +1,6 @@
 import json
 import os
+from pickle import FALSE
 import requests
 from bs4 import BeautifulSoup
 
@@ -26,7 +27,7 @@ def check_updates():
             if(article_id in articles):
                 continue
             else:
-                article_title = article.find("span", class_="tn-article-title").text.strip()
+                article_title = json.dumps(article.find("span", class_="tn-article-title").text.strip())
                 article_date = article.find("time").text.strip()
 
                 articles[article_id] = {

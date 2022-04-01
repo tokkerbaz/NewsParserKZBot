@@ -11,7 +11,7 @@ dp = Dispatcher(bot)
 
 
 async def start(message):
-    start_buttons = ["Все новости Liter", "Последние 5 новостей Liter", "Свежие новости Liter"]
+    start_buttons = ["Все новости Liter", "Последние 5 новостей Liter", "Свежие новости Liter", "Меню"]
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(*start_buttons)
 
@@ -22,7 +22,7 @@ async def get_all_news(message: types.Message):
         news_dict = json.load(file)
 
     for key, article in sorted(news_dict.items()):
-        news = f"{hbold(article['article_date'])}\n{hlink(article['article_title'],article['article_url'])}"
+        news = f"{hbold(article['article_date'])}\n{hlink(json.loads(article['article_title']),article['article_url'])}"
 
         await message.answer(news)
 
@@ -31,7 +31,7 @@ async def get_last_five(message: types.Message):
         news_dict = json.load(file)
 
     for key, article in sorted(news_dict.items())[-5:]:
-        news = f"{hbold(article['article_date'])}\n{hlink(article['article_title'],article['article_url'])}"
+        news = f"{hbold(article['article_date'])}\n{hlink(json.loads(article['article_title']),article['article_url'])}"
 
         await message.answer(news)
 
@@ -41,7 +41,7 @@ async def get_fresh_news(message: types.Message):
 
     if len(fresh_news) >= 1:
         for key, article in sorted(fresh_news.items())[-5:]:
-            news = f"{hbold(article['article_date'])}\n{hlink(article['article_title'],article['article_url'])}"
+            news = f"{hbold(article['article_date'])}\n{hlink(json.loads(article['article_title']),article['article_url'])}"
             await message.answer(news)
     else:
         await message.answer("Пока нет свежих новостей...")
